@@ -7,7 +7,7 @@ export function createSummarizeService({
   model = process.env.OPENAI_MODEL || default_model
 } = {}) {
   return {
-    async summarize(ticket: any) {
+    async summarize(ticket) {
       const response = await client.responses.create({
         model,
         input: `Summarize this support ticket in 2 lines : \n\n${ticket}`,
