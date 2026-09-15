@@ -1,6 +1,3 @@
-import dotenv from "dotenv";
-dotenv.config();
-
 import { query } from "@anthropic-ai/claude-agent-sdk";
 
 const provider = (process.env.LLM_PROVIDER || (process.env.OPENROUTER_API_KEY ? "openrouter" : "anthropic")) as
@@ -22,7 +19,7 @@ function getProviderConfig(provider: "openrouter" | "anthropic") {
         ANTHROPIC_BASE_URL: "https://openrouter.ai/api",
         ANTHROPIC_AUTH_TOKEN: apiKey,
         OPENROUTER_API_KEY: apiKey,
-        ANTHROPIC_API_KEY: ""  
+        ANTHROPIC_API_KEY: ""
       }
     };
   } else {
@@ -48,11 +45,13 @@ async function runAgent() {
 
   try {
     const agentQuery = query({
-      prompt: "please create a lib/myTokenizer.ts file in my root which should contain a basic typescript llm tokenizer takes a string input using readline and tokenizes it.",
+      prompt:
+        "please create a lib/myTokenizer.ts file in my root which should contain a basic typescript llm tokenizer takes a string input using readline and tokenizes it.",
       options: {
         model: config.model,
         allowedTools: ["Read", "Edit", "Glob"],
         permissionMode: "acceptEdits",
+        thinking: { type: "disabled" },
         env: config.env
       }
     });
