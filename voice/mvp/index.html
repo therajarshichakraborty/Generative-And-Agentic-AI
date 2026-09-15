@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voice Agents</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="space-canvas"></canvas>
+
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <main class="container">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>AI Voice Studio</span>
+      </div>
+
+      <div class="voice-visualizer">
+        <div class="orb-ring orb-ring-1"></div>
+        <div class="orb-ring orb-ring-2"></div>
+        <div class="orb-core">
+          <svg
+            class="orb-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            <line x1="12" x2="12" y1="19" y2="22" />
+          </svg>
+        </div>
+      </div>
+
+      <h1>Building a Voice Agent</h1>
+      <p class="subtitle">
+        Real-time conversational intelligence with high-fidelity speech processing and neural responses.
+      </p>
+    </main>
+
+    <script src="stars.js"></script>
+    <script src="voice_agent.js"></script>
+  </body>
+</html>
