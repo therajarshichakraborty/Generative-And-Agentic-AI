@@ -1,14 +1,16 @@
 import { query } from "@anthropic-ai/claude-agent-sdk";
 
-const provider = (process.env.LLM_PROVIDER || (process.env.OPENROUTER_API_KEY ? "openrouter" : "anthropic")) as
-  | "openrouter"
-  | "anthropic";
+const provider = (process.env.LLM_PROVIDER ||
+  (process.env.OPENROUTER_API_KEY ? "openrouter" : "anthropic")) as
+  "openrouter" | "anthropic";
 
 function getProviderConfig(provider: "openrouter" | "anthropic") {
   if (provider === "openrouter") {
     const apiKey = process.env.OPENROUTER_API_KEY;
     if (!apiKey) {
-      throw new Error("Missing OPENROUTER_API_KEY in environment variables or .env file.");
+      throw new Error(
+        "Missing OPENROUTER_API_KEY in environment variables or .env file."
+      );
     }
 
     return {
@@ -25,7 +27,9 @@ function getProviderConfig(provider: "openrouter" | "anthropic") {
   } else {
     const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
-      throw new Error("Missing ANTHROPIC_API_KEY in environment variables or .env file.");
+      throw new Error(
+        "Missing ANTHROPIC_API_KEY in environment variables or .env file."
+      );
     }
 
     return {
@@ -41,7 +45,9 @@ function getProviderConfig(provider: "openrouter" | "anthropic") {
 
 async function runAgent() {
   const config = getProviderConfig(provider);
-  console.log(`Starting Claude Agent using [${config.provider.toUpperCase()}] provider with model: ${config.model}\n`);
+  console.log(
+    `Starting Claude Agent using [${config.provider.toUpperCase()}] provider with model: ${config.model}\n`
+  );
 
   try {
     const agentQuery = query({
