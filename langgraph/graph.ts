@@ -35,7 +35,6 @@ const StateAnnotation = Annotation.Root({
 
 type State = typeof StateAnnotation.State;
 
-// 4. Node: Detect whether the query is a coding question
 async function detectQuery(state: State) {
   const userMessage = state.user_message;
 
@@ -62,7 +61,6 @@ async function detectQuery(state: State) {
   return { is_coding_question: isCodingQuestion };
 }
 
-// 5. Conditional Edge: Route based on is_coding_question
 function routeEdge(
   state: State
 ): "solve_coding_question" | "solve_simple_question" {
@@ -72,7 +70,6 @@ function routeEdge(
   return "solve_simple_question";
 }
 
-// 6. Node: Solve coding question (using gpt-4o)
 async function solveCodingQuestion(state: State) {
   const userMessage = state.user_message;
 
@@ -94,7 +91,6 @@ async function solveCodingQuestion(state: State) {
   return { ai_message: answer };
 }
 
-// 7. Node: Solve simple / chat question (using gpt-4o-mini)
 async function solveSimpleQuestion(state: State) {
   const userMessage = state.user_message;
 
@@ -115,7 +111,6 @@ async function solveSimpleQuestion(state: State) {
   return { ai_message: answer };
 }
 
-// 8. Build the State Graph
 const graphBuilder = new StateGraph(StateAnnotation)
   .addNode("detect_query", detectQuery)
   .addNode("solve_coding_question", solveCodingQuestion)
@@ -127,7 +122,6 @@ const graphBuilder = new StateGraph(StateAnnotation)
 
 export const graph = graphBuilder.compile();
 
-// 9. Execute / Test the Graph
 async function callGraph() {
   const initialState: State = {
     user_message: "Hello ji! How do I sort an array in JavaScript?",
@@ -139,5 +133,8 @@ async function callGraph() {
   console.log("Final Result:", result);
 }
 
-// Run if directly executed
-callGraph().catch(console.error);
+await callGraph()
+.then(()=>{
+  console.log(" \n Graph created successfully")
+})
+.catch(console.error);

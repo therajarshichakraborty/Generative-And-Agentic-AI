@@ -6,7 +6,6 @@ import OpenAI from "openai";
 import { zodResponseFormat } from "openai/helpers/zod";
 import { z } from "zod";
 
-// 1. Define Schemas using Zod (equivalent to Pydantic BaseModels)
 const DetectCallResponse = z.object({
   is_question_ai: z.boolean(),
 });
@@ -15,12 +14,10 @@ const CodingAIResponse = z.object({
   answer: z.string(),
 });
 
-// 2. Initialize OpenAI client
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// 3. Define Graph State Schema using Annotation.Root
 const StateAnnotation = Annotation.Root({
   user_message: Annotation({
     reducer: (x, y) => y ?? x,
@@ -36,7 +33,6 @@ const StateAnnotation = Annotation.Root({
   }),
 });
 
-// 4. Node: Detect whether the query is a coding question
 async function detectQuery(state) {
   const userMessage = state.user_message;
 
@@ -59,7 +55,6 @@ async function detectQuery(state) {
   return { is_coding_question: isCodingQuestion };
 }
 
-// 5. Conditional Edge: Route based on is_coding_question
 function routeEdge(state) {
   if (state.is_coding_question) {
     return "solve_coding_question";
@@ -67,7 +62,6 @@ function routeEdge(state) {
   return "solve_simple_question";
 }
 
-// 6. Node: Solve coding question
 async function solveCodingQuestion(state) {
   const userMessage = state.user_message;
 
@@ -89,7 +83,6 @@ async function solveCodingQuestion(state) {
   return { ai_message: answer };
 }
 
-// 7. Node: Solve simple / chat question
 async function solveSimpleQuestion(state) {
   const userMessage = state.user_message;
 
@@ -110,7 +103,6 @@ async function solveSimpleQuestion(state) {
   return { ai_message: answer };
 }
 
-// 8. Build the State Graph
 const graphBuilder = new StateGraph(StateAnnotation)
   .addNode("detect_query", detectQuery)
   .addNode("solve_coding_question", solveCodingQuestion)
@@ -122,7 +114,6 @@ const graphBuilder = new StateGraph(StateAnnotation)
 
 export const graph = graphBuilder.compile();
 
-// 9. Execute / Test the Graph
 async function callGraph() {
   const initialState = {
     user_message: "Hello ji! How do I sort an array in JavaScript?",
@@ -134,5 +125,8 @@ async function callGraph() {
   console.log("Final Result:", result);
 }
 
-// Run if directly executed
-callGraph().catch(console.error);
+await callGraph()
+  .then(() => {
+    console.log("\n Graph created successfully")
+  })
+  .catch(console.error);

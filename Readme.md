@@ -1,1 +1,1 @@
-## Hello I am Learning Gen & Agentic AI Here
+## Hello I am Learning Generative & Agentic AI Here
