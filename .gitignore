@@ -1,2 +1,9 @@
 node_modules/
 .env
+__pycache__/
+.env.local
+.env.example
+docs/.agent/
+docs/.env
+docs/.gitignore
+.venv

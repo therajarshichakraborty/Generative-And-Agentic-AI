@@ -1,0 +1,29 @@
+[project]
+name = "gen-and-agentic-ai"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=1.8.0",
+    "chromadb>=1.5.9",
+    "google-genai>=2.25.0",
+    "langchain-anthropic>=1.7.4",
+    "langchain-community>=0.4.2",
+    "langchain-core>=1.6.4",
+    "langchain-google-genai>=4.4.0",
+    "langchain-openai>=1.6.6",
+    "langchain-qdrant>=1.1.0",
+    "langchain-text-splitters>=1.1.2",
+    "langgraph>=1.2.12",
+    "langsmith>=0.14.0",
+    "openai-agents>=0.22.3",
+    "pdfplumber>=0.11.10",
+    "pydantic>=2.13.5",
+    "pypdf>=6.19.0",
+    "python-dotenv>=1.2.3",
+    "qdrant-client>=1.19.1",
+    "tiktoken>=0.14.0",
+    "tqdm>=4.70.1",
+]
+
+[tool.uv]
+package = false

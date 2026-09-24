@@ -1,4 +1,3 @@
-// Shooting Stars and Dynamic Starfield Canvas Animation
 (function () {
   const canvas = document.getElementById('space-canvas');
   if (!canvas) return;
