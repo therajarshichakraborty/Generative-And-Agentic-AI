@@ -58,4 +58,4 @@ async function query(userQuery) {
 
 }
 
-query('who is voldemort');
+await query('who is voldemort');

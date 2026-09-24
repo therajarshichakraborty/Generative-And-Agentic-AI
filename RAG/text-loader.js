@@ -30,4 +30,4 @@ async function textLoaderEmbeddings(filepath) {
 }
 
 
-textLoaderEmbeddings(path.join(import.meta.dirname, "test.txt"));
+await textLoaderEmbeddings(path.join(import.meta.dirname, "test.txt"));

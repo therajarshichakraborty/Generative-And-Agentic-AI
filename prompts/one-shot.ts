@@ -157,4 +157,4 @@ async function main() {
   console.log(history);
 }
 
-main();
+await main();

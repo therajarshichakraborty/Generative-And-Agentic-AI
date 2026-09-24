@@ -1,8 +1,8 @@
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf"
 import { OpenAIEmbeddings } from "@langchain/openai"
 import { QdrantVectorStore } from "@langchain/qdrant"
-import { env } from "../env.ts"
-import path from "path"
+import { env } from "../env.js"
+import path from "node:path"
 
 async function generateEmbeddings(filepath) {
     const loader = new PDFLoader(filepath);
@@ -25,5 +25,5 @@ async function generateEmbeddings(filepath) {
     console.log("Documents indexed successfully")
 }
 
-generateEmbeddings(path.join(import.meta.dirname, "hp.pdf"))
+await generateEmbeddings(path.join(import.meta.dirname, "hp.pdf"))
 

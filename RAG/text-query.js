@@ -67,4 +67,4 @@ async function query(userQuery) {
 
 }
 
-query('summarize the poem');
+await query('summarize the poem');

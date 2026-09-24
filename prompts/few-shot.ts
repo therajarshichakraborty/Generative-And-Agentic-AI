@@ -51,4 +51,4 @@ async function runFewShotPrompt() {
   }
 }
 
-runFewShotPrompt();
+await runFewShotPrompt();
