@@ -7,3 +7,5 @@ docs/.agent/
 docs/.env
 docs/.gitignore
 .venv
+
+projects/ideas.md
