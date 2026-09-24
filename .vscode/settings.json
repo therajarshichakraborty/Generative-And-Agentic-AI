@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["chaicode", "langchain", "langgraph", "OPENROUTER"]
+  "cSpell.words": [
+    "chaicode",
+    "dotenv",
+    "groq",
+    "langchain",
+    "langgraph",
+    "OPENROUTER"
+  ]
 }
