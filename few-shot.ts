@@ -1,5 +1,9 @@
 import OpenAI from "openai";
-const openai = new OpenAI();
+import {env} from "./env.js";
+
+const openai = new OpenAI({
+  apiKey:env.OPENAI_API_KEY
+});
 
 async function runFewShotPrompt() {
   try {
@@ -28,4 +32,4 @@ async function runFewShotPrompt() {
   }
 }
 
-runFewShotPrompt();
+await runFewShotPrompt();

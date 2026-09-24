@@ -4,10 +4,14 @@
     "beautifulsoup",
     "chaicode",
     "dotenv",
+    "genai",
     "groq",
     "langchain",
     "langgraph",
     "OPENROUTER",
-    "qdrant"
+    "qdrant",
+    "Rajarshi",
+    "textsplitters",
+    "tiktoken"
   ]
 }

@@ -3,6 +3,7 @@ from collections.abc import Iterable
 from pydantic import BaseModel, ConfigDict, Field
 
 
+
 class VocabularyEntry(BaseModel):
     model_config = ConfigDict(frozen=True)
 
@@ -35,7 +36,6 @@ class Vocabulary(BaseModel):
             self.add_token(token)
 
     def get_id(self, token: str) -> int:
-
         try:
             return self.token_to_id_map[token]
         except KeyError as exc:
