@@ -1,7 +1,7 @@
 import { OpenAIEmbeddings } from '@langchain/openai';
 import { QdrantVectorStore } from '@langchain/qdrant';
 import OpenAI from 'openai';
-import { env } from '../env.ts';
+import { env } from '../env.js';
 
 const client = new OpenAI({
     baseURL: "https://openrouter.ai/api/v1",
@@ -10,7 +10,7 @@ const client = new OpenAI({
 
 async function query(userQuery) {
     // Convert user query to vector embeddings?
-    // Initalize the embedding model
+    // Initialize the embedding model
     const embeddings = new OpenAIEmbeddings({
         configuration: {
             baseURL: "https://openrouter.ai/api/v1"
